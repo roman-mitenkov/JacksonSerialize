@@ -1,0 +1,7 @@
+<elevate region="string" rebuild="string">
+  <!--Zero or more repetitions:-->
+  <query text="string" op="ADD">
+    <!--Zero or more repetitions:-->
+    <doc id="string" exclude="string">string</doc>
+  </query>
+</elevate>

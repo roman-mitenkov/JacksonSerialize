@@ -1,0 +1,10 @@
+<elevate region="OOUS" rebuild="true">
+    <query>
+        <query text="cat">
+            <doc>
+                <doc id="id2"/>
+                <doc/>
+            </doc>
+        </query>
+    </query>
+</elevate>

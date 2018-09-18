@@ -1,0 +1,42 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:simpleType name="operation" final="restriction">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="ADD"/>
+            <xs:enumeration value="DELETE"/>
+            <xs:enumeration value="REPLACE"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="elevate">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="query" maxOccurs="unbounded" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>identify the query to elevate</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="doc" maxOccurs="unbounded" minOccurs="0">
+                                <xs:annotation>
+                                    <xs:documentation>element to elevate when we get the query</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute type="xs:string" name="id" use="required"/>
+                                            <xs:attribute type="xs:string" name="exclude" use="optional"/>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:string" name="text" use="required"/>
+                        <xs:attribute type="operation" name="op" use="optional"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="region" use="optional"/>
+            <xs:attribute type="xs:string" name="rebuild" use="optional"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
